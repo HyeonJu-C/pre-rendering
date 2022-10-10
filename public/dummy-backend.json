@@ -1,0 +1,9 @@
+{
+  "products": [
+    { "id": "p1", "title": "Avocado" },
+    { "id": "p2", "title": "Tomato" },
+    { "id": "p3", "title": "Garlic" },
+    { "id": "p4", "title": "Cucumber" },
+    { "id": "p5", "title": "Onion" }
+  ]
+}
