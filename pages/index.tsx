@@ -64,6 +64,10 @@ export async function getStaticProps() {
     props: {
       products: data.products,
     },
+    // incremental static re-generation(ISR)
+    // 60 초 마다 page를 재생성한다 => server에서 60초 마다 getStaticProps 함수를 실행한다.
+    // +) dev 모드에서는 아래에 입력한 값과 상관 없이 매 request 마다 page를 재생성한다.
+    revalidate: 60,
   };
 }
 
