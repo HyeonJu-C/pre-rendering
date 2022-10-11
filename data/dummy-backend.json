@@ -1,9 +1,25 @@
 {
   "products": [
-    { "id": "p1", "title": "Avocado" },
-    { "id": "p2", "title": "Tomato" },
-    { "id": "p3", "title": "Garlic" },
-    { "id": "p4", "title": "Cucumber" },
-    { "id": "p5", "title": "Onion" }
+    {
+      "id": "p1",
+      "title": "Avocado",
+      "description": "This is Avocado"
+    },
+    {
+      "id": "p2",
+      "title": "Tomato",
+      "description": "This is Tomato"
+    },
+    {
+      "id": "p3",
+      "title": "Garlic",
+      "description": "This is Garlic"
+    },
+    {
+      "id": "p4",
+      "title": "Cucumber",
+      "description": "This is Cucumber"
+    },
+    { "id": "p5", "title": "Onion", "description": "This is Onion" }
   ]
 }

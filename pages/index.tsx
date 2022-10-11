@@ -4,6 +4,7 @@
 //    - getStaticProps 함수 내에서는 fs에 접근할 수 있다.
 // 2. client side 코드에는 아래의 import 구문이 포함되지 않는다.
 import fs from 'fs/promises'; // fs/promise 모듈의 함수는 promise를 반환한다.
+import Link from 'next/link';
 import path from 'path';
 
 /*
@@ -13,9 +14,10 @@ import path from 'path';
   - 검색엔진은 page source 코드를 확인한다. => SEO 문제
   - 실제 백엔드로 부터 데이터를 받아와야만 한다. => 화면 로딩 지연  
 */
-interface Product {
+export interface Product {
   id: string;
   title: string;
+  description: string;
 }
 
 interface Props {
@@ -28,7 +30,9 @@ function Home({ products }: Props) {
     <ul>
       {/* pre rendered page에 li가 포함된다 */}
       {products?.map(({ id, title }) => (
-        <li key={`products-${id}`}>{title}</li>
+        <li key={`products-${id}`}>
+          <Link href={`/${id}`}>{title}</Link>
+        </li>
       ))}
     </ul>
   );
