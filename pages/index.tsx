@@ -60,6 +60,18 @@ export async function getStaticProps() {
   // 3. return
   //    - 항상 객체를 return 한다.
   //    - 객체의 형태는 { props: {...} }와 같다.
+
+  // data 자체가 존재하지 않으면 다른 페이지로 redirect 한다.
+  if (!data)
+    return {
+      redirect: {
+        destination: '/some-route',
+      },
+    };
+
+  // products data가 없으면 404 페이지를 반환한다.
+  if (data.products.length === 0) return { notFound: true };
+
   return {
     props: {
       products: data.products,
