@@ -32,7 +32,6 @@ export default function ProductDetail({ product }: Props) {
 // 1. getStaticProps내부에서 useRouter를 호출할 수 없다.
 //  - 이 함수는 Component 함수도 custom hook도 아니기 때문이다.
 // 2. 대신 context parameter를 이용하면, dynamic params의 구체적인 값을 알 수 있다.
-// 3. 아래 함수는 에러를 발생시킨다(강의 내용 참조).
 
 export async function getStaticProps(context: GetStaticPropsContext) {
   const { params } = context;
@@ -53,5 +52,28 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     props: {
       product,
     },
+  };
+}
+
+/*
+강의 내용)
+1. getStaticPaths에서 정적으로 생성할 페이지를 지정한다.
+2. 1번에서 지정된 페이지 각각에 대하여 getStaticProps 함수가 실행된다. 
+3. context를 이용해 페이지의 params을 추출하고, 그 값을 이용할 수 있다. 
+*/
+
+export function getStaticPaths() {
+  // 객체를 반환한다
+  // 이 객체는 "paths: [{}, {}, {}...]"를 프로퍼티로 갖는다.
+  // next.js에게 pre-rendering 해야할 페이지를 알려준다.
+  return {
+    paths: [
+      { params: { productId: 'p1' } },
+      { params: { productId: 'p2' } },
+      { params: { productId: 'p3' } },
+      { params: { productId: 'p4' } },
+      { params: { productId: 'p5' } },
+    ],
+    fallback: false,
   };
 }
