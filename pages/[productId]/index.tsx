@@ -1,5 +1,6 @@
 import { readFile } from 'fs/promises';
 import { GetStaticPropsContext } from 'next';
+import { useRouter } from 'next/router';
 import path from 'path';
 import { Product } from '../index';
 
@@ -8,6 +9,14 @@ interface Props {
 }
 
 export default function ProductDetail({ product }: Props) {
+  // fallback: true
+  // - 페이지가 fallback 상태인지 확인하고, 그 때 반환할 컴포넌트를 지정해야 한다.
+  const { isFallback } = useRouter();
+  if (isFallback) return <p>loading...</p>;
+
+  // segement에 해당하는 productId가 존재하지 않을 때
+  if (!product) return <p>no product</p>;
+
   const { title, description } = product;
   return (
     <>
@@ -44,13 +53,14 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   );
   const jsonData = await readFile(filePath);
   const data = JSON.parse(jsonData.toString());
-  const product = data.products.find(
+  const products: Product[] = data.products;
+  const product = products.find(
     ({ id }: Product) => id === productId
   );
 
   return {
     props: {
-      product,
+      product: product || null,
     },
   };
 }
@@ -71,9 +81,9 @@ export function getStaticPaths() {
       { params: { productId: 'p1' } },
       { params: { productId: 'p2' } },
       { params: { productId: 'p3' } },
-      { params: { productId: 'p4' } },
-      { params: { productId: 'p5' } },
     ],
-    fallback: false,
+    // fallback options: paths에서 지정하지 않은 url에 접근했을 때, 어떻게 동작할 것인지 지정
+    // => false, true, 'blocking'
+    fallback: true,
   };
 }
