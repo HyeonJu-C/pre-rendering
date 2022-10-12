@@ -11,7 +11,7 @@
 2) Server Side Rendering
 ```
 
-### 3. Static Generation
+### 3. Static Site Generation(SSG)
 
 ### 3-1) [getStaticProps](https://github.com/HyeonJu-C/pre-rendering/blob/main/pages/index.tsx)
 
@@ -27,7 +27,7 @@
 4) dynamic page에서 getStaticProps을 사용하면 에러가 발생하는 이유
 ```
 
-### 3-2) [getStaticPages](https://github.com/HyeonJu-C/pre-rendering/blob/main/pages/[productId]/index.tsx)
+### 3-2) [getStaticPaths](https://github.com/HyeonJu-C/pre-rendering/blob/main/pages/[productId]/index.tsx)
 
 ```
 1) dynamic page를 static page로 사전 생성하기
