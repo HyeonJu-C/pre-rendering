@@ -9,8 +9,11 @@ interface Props {
 }
 
 export default function ProductDetail({ product }: Props) {
-  // fallback: true
+  // 1) fallback: true
   // - 페이지가 fallback 상태인지 확인하고, 그 때 반환할 컴포넌트를 지정해야 한다.
+  // 2) fallback: 'blocking'
+  // - fallback page를 반환하지 않고, 서버에서 full page가 생성되면 그 페이지를 반환한다.
+  // - 따라서 아래의 조건문이 실행되지 않는다.
   const { isFallback } = useRouter();
   if (isFallback) return <p>loading...</p>;
 
@@ -51,9 +54,13 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     ({ id }: Product) => id === productId
   );
 
+  // product이 존재하지 않을 때, getStaticProps에서 notFound 페이지를 반환할 수 있다.
+  // 이 때에는 page 컴포넌트에서 처리하고 있는 if(!product) 조건문이 실행되지 않는다.
+  if (!product) return { notFound: true };
+
   return {
     props: {
-      product: product || null,
+      product: product,
     },
   };
 }

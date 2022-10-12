@@ -7,7 +7,7 @@
 ### 2. Two forms of Pre-rendering
 
 ```
-1) Static Generation(recommended)
+1) Static Site Generation(recommended)
 2) Server Side Rendering
 ```
 
