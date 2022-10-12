@@ -46,14 +46,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   const { params } = context;
   const productId = params?.productId;
 
-  const filePath = path.join(
-    process.cwd(),
-    'data',
-    'dummy-backend.json'
-  );
-  const jsonData = await readFile(filePath);
-  const data = JSON.parse(jsonData.toString());
-  const products: Product[] = data.products;
+  const products: Product[] = await getProductsData();
   const product = products.find(
     ({ id }: Product) => id === productId
   );
@@ -72,18 +65,29 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 3. context를 이용해 페이지의 params을 추출하고, 그 값을 이용할 수 있다. 
 */
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
   // 객체를 반환한다
   // 이 객체는 "paths: [{}, {}, {}...]"를 프로퍼티로 갖는다.
   // next.js에게 pre-rendering 해야할 페이지를 알려준다.
+  const products = await getProductsData();
+  const paths = products.map(({ id }: Product) => ({
+    params: { productId: id },
+  }));
   return {
-    paths: [
-      { params: { productId: 'p1' } },
-      { params: { productId: 'p2' } },
-      { params: { productId: 'p3' } },
-    ],
+    paths,
     // fallback options: paths에서 지정하지 않은 url에 접근했을 때, 어떻게 동작할 것인지 지정
     // => false, true, 'blocking'
     fallback: true,
   };
+}
+
+async function getProductsData() {
+  const filePath = path.join(
+    process.cwd(),
+    'data',
+    'dummy-backend.json'
+  );
+  const jsonData = await readFile(filePath);
+  const data = JSON.parse(jsonData.toString());
+  return data.products;
 }
