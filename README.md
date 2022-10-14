@@ -45,5 +45,7 @@
 
 ```
 1) getStaticProps와 차이점
+    - revalidate, paths 옵션 지정할 필요❌
 
+2) dtnamic page를 server side rendering 하기
 ```
