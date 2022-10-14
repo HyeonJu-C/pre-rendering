@@ -38,3 +38,12 @@
 3) fallback 옵션
     - false, true, 'blocking' 옵션 비교
 ```
+
+### 4. Server Side Rendering(SSR)
+
+### 4-1) [getServerSideProps](https://github.com/HyeonJu-C/pre-rendering/blob/main/pages/user-profile/index.tsx)
+
+```
+1) getStaticProps와 차이점
+
+```
