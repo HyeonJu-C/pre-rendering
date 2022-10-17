@@ -50,9 +50,8 @@
 2) dtnamic page를 server side rendering 하기
 ```
 
-### 5. [Client Side Data Fetching](https://github.com/HyeonJu-C/pre-rendering/blob/main/pages/carts/index.tsx)
+### 5. Client Side Data Fetching
 
-```
-1) client side에서 데이터 받아오기
-2) SSR 또는 SSG와 결합하기
-```
+### 5-1) [client side에서 데이터 받아오기]()
+
+### 5-2) [SSR 또는 SSG와 결합하기](https://github.com/HyeonJu-C/pre-rendering/blob/main/pages/carts/index.tsx)
