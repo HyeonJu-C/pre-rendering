@@ -52,6 +52,6 @@
 
 ### 5. Client Side Data Fetching
 
-### 5-1) [client side에서 데이터 받아오기]()
+### 5-1) [client side에서 데이터 받아오기](https://github.com/HyeonJu-C/pre-rendering/commit/4163ea30c424797ce71196585e442f33ffa94bee#diff-1e3f0fd0b606eab97b6f5a7cd97eba991b94657754204d4888df3159d0f15e24)
 
 ### 5-2) [SSR 또는 SSG와 결합하기](https://github.com/HyeonJu-C/pre-rendering/blob/main/pages/carts/index.tsx)
